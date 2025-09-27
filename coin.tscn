@@ -1,7 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0acb7ikr7l6i"]
+[gd_scene load_steps=22 format=3 uid="uid://d0acb7ikr7l6i"]
 
 [ext_resource type="Script" uid="uid://c64eplxm6brxa" path="res://scripts/coin.gd" id="1_0t63x"]
 [ext_resource type="Texture2D" uid="uid://i564k11jhkyt" path="res://assets/brackeys_platformer_assets/sprites/coin.png" id="1_d5gmh"]
+[ext_resource type="Texture2D" uid="uid://dv2eeitasulh1" path="res://Assets/Props Items and VFX/Sunnyland items/Sprites/gem/gem-1.png" id="3_o4fra"]
+[ext_resource type="Texture2D" uid="uid://1vu8ep662p1o" path="res://Assets/Props Items and VFX/Sunnyland items/Sprites/gem/gem-2.png" id="4_te2np"]
+[ext_resource type="Texture2D" uid="uid://cj6pbirgaxoff" path="res://Assets/Props Items and VFX/Sunnyland items/Sprites/gem/gem-3.png" id="5_m1j4n"]
+[ext_resource type="Texture2D" uid="uid://bo7ytqgx0y0fr" path="res://Assets/Props Items and VFX/Sunnyland items/Sprites/gem/gem-4.png" id="6_v1mwu"]
+[ext_resource type="Texture2D" uid="uid://b2g7502lxq7n4" path="res://Assets/Props Items and VFX/Sunnyland items/Sprites/gem/gem-5.png" id="7_uf4yh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0t63x"]
 atlas = ExtResource("1_d5gmh")
@@ -93,6 +98,26 @@ animations = [{
 "loop": true,
 "name": &"coin",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_o4fra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_te2np")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m1j4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v1mwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uf4yh")
+}],
+"loop": true,
+"name": &"gem",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_relgi"]
@@ -104,10 +129,11 @@ script = ExtResource("1_0t63x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-0.42307705, 0.49999976)
+scale = Vector2(0.6923077, 0.6923077)
 sprite_frames = SubResource("SpriteFrames_s5w7y")
-animation = &"coin"
-autoplay = "coin"
-frame_progress = 0.43362665
+animation = &"gem"
+autoplay = "gem"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_relgi")

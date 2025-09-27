@@ -1,7 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4vspbkiriffj"]
+[gd_scene load_steps=18 format=3 uid="uid://c4vspbkiriffj"]
 
 [ext_resource type="Script" uid="uid://ddflld62mdulg" path="res://enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://vlimfodvo101" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://c41jdlvwtq2vu" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino1.png" id="3_e1ltt"]
+[ext_resource type="Texture2D" uid="uid://dc4y1m620vgdt" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino2.png" id="4_dxifv"]
+[ext_resource type="Texture2D" uid="uid://c2c4yeje5uoh0" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino3.png" id="5_pwjut"]
+[ext_resource type="Texture2D" uid="uid://c7vkfjccaewwk" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino4.png" id="6_n0g06"]
+[ext_resource type="Texture2D" uid="uid://u20thj4dwlgx" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino5.png" id="7_ar8e5"]
+[ext_resource type="Texture2D" uid="uid://bpod23jlqq60p" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino6.png" id="8_doop2"]
+[ext_resource type="Texture2D" uid="uid://by5gislwwo5fm" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino7.png" id="9_5hcft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
 size = Vector2(20, 63)
@@ -41,6 +48,32 @@ animations = [{
 "name": &"Idle Walk",
 "speed": 5.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_e1ltt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dxifv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pwjut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n0g06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ar8e5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_doop2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5hcft")
+}],
+"loop": true,
+"name": &"Villlain Walk",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -48,10 +81,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
-size = Vector2(14, 13)
+size = Vector2(19, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
-size = Vector2(14, 13)
+size = Vector2(19, 17)
 
 [node name="Enemy" type="Node2D"]
 
@@ -78,20 +111,22 @@ collision_mask = 4
 script = ExtResource("1_4gyqm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_3yqyl")
-animation = &"Idle Walk"
-autoplay = "Idle Walk"
+animation = &"Villlain Walk"
+autoplay = "Villlain Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
-position = Vector2(0, 5.5)
+position = Vector2(-0.5, 4.5)
 shape = SubResource("RectangleShape2D_7k104")
 
 [node name="Area2D" type="Area2D" parent="enemy"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/Area2D"]
-position = Vector2(0, 5.5)
+texture_filter = 1
+position = Vector2(-0.5, 4.5)
 shape = SubResource("RectangleShape2D_4gyqm")
 
 [connection signal="body_entered" from="Area2D" to="enemy" method="_on_area_2d_body_entered"]

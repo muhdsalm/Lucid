@@ -15,11 +15,13 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	direction *= -1
 	velocity.x = speed * direction
+	$AnimatedSprite2D.flip_h = true
 
 
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	direction *= -1
 	velocity.x = speed * direction
+	$AnimatedSprite2D.flip_h = false
 
 
 func _on_self_body_entered(body: Node2D) -> void:

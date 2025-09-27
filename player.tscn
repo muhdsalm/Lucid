@@ -1,7 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://je15gw670vv"]
+[gd_scene load_steps=21 format=3 uid="uid://je15gw670vv"]
 
 [ext_resource type="Texture2D" uid="uid://dw8k086ytno7x" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://p0omgnu2oueo" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://bhm5qqalld7el" path="res://Assets/Characters/Players/Fiery Imp/idle/Sprites/idle-1.png" id="3_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://c340fv1k3rbd7" path="res://Assets/Characters/Players/Fiery Imp/idle/Sprites/idle-2.png" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://dv4turay7rgpk" path="res://Assets/Characters/Players/Fiery Imp/idle/Sprites/idle-3.png" id="5_dw050"]
+[ext_resource type="Texture2D" uid="uid://bkf0wniscos68" path="res://Assets/Characters/Players/Fiery Imp/idle/Sprites/idle-4.png" id="6_b26j0"]
+[ext_resource type="Texture2D" uid="uid://bg0upbplt7k0v" path="res://Assets/Characters/Players/Fiery Imp/run/Sprites/run-1.png" id="7_bwjto"]
+[ext_resource type="Texture2D" uid="uid://316nwck2gn3u" path="res://Assets/Characters/Players/Fiery Imp/run/Sprites/run-2.png" id="8_606se"]
+[ext_resource type="Texture2D" uid="uid://chkf4dsfv6orq" path="res://Assets/Characters/Players/Fiery Imp/run/Sprites/run-3.png" id="9_u1c27"]
+[ext_resource type="Texture2D" uid="uid://bbj7p5mnkacg6" path="res://Assets/Characters/Players/Fiery Imp/run/Sprites/run-4.png" id="10_op7ga"]
+[ext_resource type="Texture2D" uid="uid://dknspwi1m36uf" path="res://Assets/Characters/Players/Fiery Imp/run/Sprites/run-5.png" id="11_q13i1"]
+[ext_resource type="Texture2D" uid="uid://btvmrvolc7rl1" path="res://Assets/Characters/Players/Fiery Imp/run/Sprites/run-6.png" id="12_pylmc"]
+[ext_resource type="Texture2D" uid="uid://p0yctkuoqbq2" path="res://Assets/Characters/Players/Fiery Imp/run/Sprites/run-7.png" id="13_pbfsw"]
+[ext_resource type="Texture2D" uid="uid://kr2lfikvxc2j" path="res://Assets/Characters/Players/Fiery Imp/run/Sprites/run-8.png" id="14_5tmop"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("1_4flbx")
@@ -23,6 +35,23 @@ region = Rect2(96, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_2hs0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dw050")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b26j0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_onrkg")
 }, {
 "duration": 1.0,
@@ -35,8 +64,37 @@ animations = [{
 "texture": SubResource("AtlasTexture_sweqy")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"idle_",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_bwjto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_606se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_u1c27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_op7ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_q13i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pylmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pbfsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5tmop")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
@@ -49,12 +107,11 @@ script = ExtResource("1_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1, -5.176471)
-scale = Vector2(0.7148432, 0.6562499)
+position = Vector2(0.2674179, -8.011111)
+scale = Vector2(0.4115076, 0.37777767)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
-frame_progress = 0.32880312
 offset = Vector2(-2.4150963, -6.588237)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
