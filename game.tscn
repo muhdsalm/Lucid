@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://3os0riatvvus"]
+[gd_scene load_steps=24 format=3 uid="uid://3os0riatvvus"]
 
 [ext_resource type="PackedScene" uid="uid://je15gw670vv" path="res://player.tscn" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://chgpnsicox5rc" path="res://assets/brackeys_platformer_assets/sprites/light_green_paint_background.jpg" id="1_fc0e3"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://d0acb7ikr7l6i" path="res://coin.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://b2kligik5piti" path="res://killzone.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://wukq5ybfmq55" path="res://scenes/platform vertical.tscn" id="7_eow3j"]
+[ext_resource type="Script" uid="uid://ctu88qo1c340e" path="res://label.gd" id="8_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://dw8k086ytno7x" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="9_vef74"]
+[ext_resource type="PackedScene" uid="uid://c4vspbkiriffj" path="res://enemy.tscn" id="10_hve3p"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_feb5d"]
 bounce = 0.16
@@ -360,17 +363,23 @@ _data = {
 &"vertical": SubResource("Animation_j5wjh")
 }
 
-[node name="game" type="Node2D"]
+[node name="game" type="Control"]
 texture_filter = 1
-position = Vector2(-135, -52)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -135.0
+offset_top = -52.0
+offset_right = -135.0
+offset_bottom = -52.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.5549726, 0.63000965, 0.82120734, 1)
 self_modulate = Color(0.6039216, 0.7921569, 1, 1)
 texture_filter = 1
-offset_left = -2027.0
+layout_mode = 0
+offset_left = -2026.0
 offset_top = -1009.0
-offset_right = 5973.0
+offset_right = 5974.0
 offset_bottom = 4322.0
 texture = ExtResource("1_fc0e3")
 
@@ -383,7 +392,8 @@ layer_0/tile_data = PackedInt32Array(262135, 0, 0, 262136, 0, 1, 196600, 0, 0, 2
 
 [node name="player" parent="." instance=ExtResource("1_80nbo")]
 texture_filter = 1
-position = Vector2(-136, 36)
+position = Vector2(-133, 44)
+metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 texture_filter = 1
@@ -492,3 +502,47 @@ libraries = {
 &"": SubResource("AnimationLibrary_iotsf")
 }
 autoplay = "vertical"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 1026.0
+offset_top = 535.5
+offset_right = 1203.0
+offset_bottom = 604.5
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "x 3"
+script = ExtResource("8_j5wjh")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(988.25, 561.25)
+scale = Vector2(3.3906248, 3.3906248)
+texture = ExtResource("9_vef74")
+hframes = 8
+vframes = 8
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -194.99997
+offset_top = 37.0
+offset_right = 6.0000305
+offset_bottom = 120.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 60
+text = "Level 1"
+
+[node name="Enemy" parent="." instance=ExtResource("10_hve3p")]
+position = Vector2(581, -281)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="Enemy/Area2D" index="0"]
+position = Vector2(418, 214)
+
+[node name="CollisionShape2D" parent="Enemy/Area2D2" index="0"]
+position = Vector2(502, 217)
+
+[editable path="Enemy"]

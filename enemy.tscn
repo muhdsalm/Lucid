@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://c4vspbkiriffj"]
+
+[ext_resource type="Script" uid="uid://ddflld62mdulg" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://vlimfodvo101" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_7k104"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
+size = Vector2(20, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gyqm"]
+atlas = ExtResource("1_7k104")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi2p4"]
+atlas = ExtResource("1_7k104")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iifgy"]
+atlas = ExtResource("1_7k104")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epg4t"]
+atlas = ExtResource("1_7k104")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3yqyl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gyqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi2p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iifgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epg4t")
+}],
+"loop": true,
+"name": &"Idle Walk",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
+size = Vector2(14, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(14, 13)
+
+[node name="Enemy" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, 247)
+shape = SubResource("RectangleShape2D_7xaro")
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(1130, 262)
+shape = SubResource("RectangleShape2D_7xaro")
+
+[node name="enemy" type="CharacterBody2D" parent="."]
+position = Vector2(460, 220)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_4gyqm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
+sprite_frames = SubResource("SpriteFrames_3yqyl")
+animation = &"Idle Walk"
+autoplay = "Idle Walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_7k104")
+
+[node name="Area2D" type="Area2D" parent="enemy"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/Area2D"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[connection signal="body_entered" from="Area2D" to="enemy" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="enemy" method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="enemy/Area2D" to="enemy" method="_on_self_body_entered"]
