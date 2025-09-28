@@ -6,6 +6,7 @@ func _on_body_entered(body):
 	get_parent().hit()
 	print("You Died!")
 	$Timer.start(0)
+	$AudioStreamPlayer.play()
 	Data.reset()
 	
 func _on_timer_timeout() -> void:

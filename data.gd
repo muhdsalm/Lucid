@@ -9,6 +9,7 @@ extends Node
 @export var coins = 0
 
 @export var disabled = false
+@export var first = true
 
 func reset():
 	lives = 3

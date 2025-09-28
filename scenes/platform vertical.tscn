@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://wukq5ybfmq55"]
 
-[ext_resource type="Texture2D" uid="uid://2kj5oer06ygv" path="res://assets/brackeys_platformer_assets/sprites/platforms.png" id="1_bxd06"]
+[ext_resource type="Texture2D" uid="uid://0hvl30htwu30" path="res://Assets/platforms.png" id="1_bxd06"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fxs7p"]
 

@@ -27,3 +27,7 @@ func _on_area_2d_2_body_entered(body: Node2D) -> void:
 func _on_self_body_entered(body: Node2D) -> void:
 	print("Hit")
 	Data.remove_life(1)
+	if Data.lives == 0:
+		$death.play()
+	else:
+		$AudioStreamPlayer.play()

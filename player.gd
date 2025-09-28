@@ -17,6 +17,8 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if Input.is_action_pressed("run_right") and Data.right and not Data.disabled:
+		if not $AudioStreamPlayer.is_playing():
+			$AudioStreamPlayer.play()
 		$GPUParticles2D.emitting = true
 		if velocity.x < SPEED:
 			velocity.x += 10
@@ -24,6 +26,8 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.animation = "run"
 		$AnimatedSprite2D.flip_h = false
 	elif Input.is_action_pressed("run_left") and not Data.disabled:
+		if not $AudioStreamPlayer.is_playing():
+			$AudioStreamPlayer.play()
 		$GPUParticles2D.emitting = true
 		if not $AnimatedSprite2D.animation == "run":
 				$AnimatedSprite2D.animation = "run"
@@ -31,6 +35,7 @@ func _physics_process(delta: float) -> void:
 		if velocity.x > -SPEED:
 			velocity.x -= 10
 	else:
+		$AudioStreamPlayer.stop()
 		$GPUParticles2D.emitting = false
 		if not $AnimatedSprite2D.animation == "idle":
 				$AnimatedSprite2D.animation = "idle"
@@ -41,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("drop") and not Data.disabled:
 		if not Data.right:
+			$AudioStreamPlayer2.play()
 			var powerup = powerup_scene.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 			powerup.scale = Vector2(0.5, 0.5)
 			powerup.position = Vector2(self.position.x, self.position.y - 8)

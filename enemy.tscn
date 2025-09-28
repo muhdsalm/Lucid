@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://c4vspbkiriffj"]
+[gd_scene load_steps=16 format=3 uid="uid://c4vspbkiriffj"]
 
 [ext_resource type="Script" uid="uid://ddflld62mdulg" path="res://enemy.gd" id="1_4gyqm"]
-[ext_resource type="Texture2D" uid="uid://vlimfodvo101" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_7k104"]
 [ext_resource type="Texture2D" uid="uid://c41jdlvwtq2vu" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino1.png" id="3_e1ltt"]
 [ext_resource type="Texture2D" uid="uid://dc4y1m620vgdt" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino2.png" id="4_dxifv"]
 [ext_resource type="Texture2D" uid="uid://c2c4yeje5uoh0" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino3.png" id="5_pwjut"]
@@ -9,45 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://u20thj4dwlgx" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino5.png" id="7_ar8e5"]
 [ext_resource type="Texture2D" uid="uid://bpod23jlqq60p" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino6.png" id="8_doop2"]
 [ext_resource type="Texture2D" uid="uid://by5gislwwo5fm" path="res://Assets/Characters/Enemies and NPC/Dino/Sprites/Run/dino7.png" id="9_5hcft"]
+[ext_resource type="AudioStream" uid="uid://bv1og5l6souhq" path="res://Assets/hit.mp3" id="10_dxifv"]
+[ext_resource type="AudioStream" uid="uid://bf4jc7maw2bei" path="res://Assets/death.mp3" id="11_pwjut"]
+[ext_resource type="AudioStream" uid="uid://id74ffqw5u46" path="res://Assets/monster.mp3" id="12_n0g06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
 size = Vector2(20, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4gyqm"]
-atlas = ExtResource("1_7k104")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qi2p4"]
-atlas = ExtResource("1_7k104")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iifgy"]
-atlas = ExtResource("1_7k104")
-region = Rect2(48, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_epg4t"]
-atlas = ExtResource("1_7k104")
-region = Rect2(72, 0, 24, 24)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_3yqyl"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4gyqm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qi2p4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iifgy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_epg4t")
-}],
-"loop": true,
-"name": &"Idle Walk",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_e1ltt")
@@ -128,6 +97,21 @@ collision_mask = 2
 texture_filter = 1
 position = Vector2(-0.5, 4.5)
 shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="enemy"]
+stream = ExtResource("10_dxifv")
+volume_db = -5.0
+
+[node name="death" type="AudioStreamPlayer" parent="enemy"]
+stream = ExtResource("11_pwjut")
+volume_db = -5.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="enemy"]
+stream = ExtResource("12_n0g06")
+volume_db = -5.0
+autoplay = true
+max_distance = 150.0
+parameters/looping = true
 
 [connection signal="body_entered" from="Area2D" to="enemy" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="enemy" method="_on_area_2d_2_body_entered"]
