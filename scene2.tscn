@@ -1016,7 +1016,7 @@ position = Vector2(-240, -207)
 position = Vector2(-201, -191)
 
 [node name="coin15" parent="coins" instance=ExtResource("6_64ein")]
-position = Vector2(-182, -190)
+position = Vector2(-297, -207)
 
 [node name="coin16" parent="coins" instance=ExtResource("6_64ein")]
 position = Vector2(-170, -178)
@@ -1094,7 +1094,7 @@ position = Vector2(-369, -144)
 position = Vector2(-355, -144)
 
 [node name="powerup" parent="." instance=ExtResource("10_kup1q")]
-position = Vector2(192, -98)
+position = Vector2(192, -103)
 scale = Vector2(0.4, 0.4)
 
 [node name="vertical platform 2" parent="." instance=ExtResource("7_kup1q")]
@@ -1259,9 +1259,9 @@ text = "If they drop to 0, the level resets"
 
 [node name="Powerup help" type="Label" parent="."]
 offset_left = 200.0
-offset_top = -101.0
+offset_top = -106.0
 offset_right = 2186.0
-offset_bottom = 232.0
+offset_bottom = 227.0
 scale = Vector2(0.075, 0.075)
 theme = ExtResource("18_fgt4w")
 theme_override_constants/outline_size = 10
