@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cap642fsl8jy1"]
+
+[ext_resource type="FontFile" uid="uid://dokpymbjrpt2t" path="res://Assets/angel_wish/Angel wish.ttf" id="1_durij"]
+
+[resource]
+Label/fonts/font = ExtResource("1_durij")

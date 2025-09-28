@@ -8,15 +8,16 @@ extends Node
 
 @export var coins = 0
 
+@export var disabled = false
+
 func reset():
 	lives = 3
 	right = true
 	jump = 1
+	disabled = false
 	coins = 0
 	
 
 func remove_life(amount: int = 1):
 	lives -= amount
-	if lives < 1:
-		get_tree().reload_current_scene()
-		reset()
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d0acb7ikr7l6i"]
+[gd_scene load_steps=26 format=3 uid="uid://d0acb7ikr7l6i"]
 
 [ext_resource type="Script" uid="uid://c64eplxm6brxa" path="res://scripts/coin.gd" id="1_0t63x"]
 [ext_resource type="Texture2D" uid="uid://i564k11jhkyt" path="res://assets/brackeys_platformer_assets/sprites/coin.png" id="1_d5gmh"]
@@ -123,6 +123,28 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_relgi"]
 radius = 5.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o4fra"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_te2np"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.8117647, 0.44705883, 0.7529412, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m1j4n"]
+gradient = SubResource("Gradient_te2np")
+width = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v1mwu"]
+particle_flag_disable_z = true
+angle_min = -297.1
+angle_max = 51.50001
+spread = 180.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+
 [node name="coin" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_0t63x")
@@ -138,4 +160,19 @@ autoplay = "gem"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_relgi")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_o4fra")
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture1D_m1j4n")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_v1mwu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://je15gw670vv"]
+[gd_scene load_steps=25 format=3 uid="uid://je15gw670vv"]
 
 [ext_resource type="Texture2D" uid="uid://dw8k086ytno7x" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://p0omgnu2oueo" path="res://player.gd" id="1_onrkg"]
@@ -100,6 +100,32 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(7, 10)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bwjto"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_606se"]
+colors = PackedColorArray(0.99607843, 0.56078434, 0, 1, 0.8859989, 0.65705055, 0.10397919, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u1c27"]
+gradient = SubResource("Gradient_606se")
+width = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_op7ga"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 320.00003
+gravity = Vector3(-98, 0, 0)
+linear_accel_min = -88.89
+linear_accel_max = 79.369995
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 28.569998
+tangential_accel_min = -35.25
+tangential_accel_max = 27.949997
+scale_max = 2.0
+
 [node name="player" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 2
@@ -117,3 +143,12 @@ offset = Vector2(-2.4150963, -6.588237)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -7)
 shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_bwjto")
+position = Vector2(2, -3)
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture1D_u1c27")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_op7ga")
