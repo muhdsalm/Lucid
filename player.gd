@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 80.0
 const JUMP_VELOCITY = -260.0
-var powerup_scene = preload("res://powerup.tscn")
+var powerup_scene = load("res://powerup.tscn")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("drop") and not Data.disabled:
 		if not Data.right:
 			$AudioStreamPlayer2.play()
-			var powerup = powerup_scene.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+			var powerup = powerup_scene.instantiate()
 			powerup.scale = Vector2(0.5, 0.5)
 			powerup.position = Vector2(self.position.x, self.position.y - 8)
 			
